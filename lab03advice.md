@@ -43,9 +43,9 @@ Now that you know that there's something wrong with the node you stop at when th
 - Blame the body of the loop
 - Blame the conditional of the loop.
 
-Which one is more likely? Since the body of the loop simply moves curr further down the list i.e. ```curr = curr->next```, it's probably more to do with the condition guarding the loop.
+Which one is more likely? Since the body of the loop simply moves curr further down the list i.e. ```curr = curr->next```, it's probably more to do with the condition guarding the loop. Hopefully you can read the following example and derive the new condition on the loop yourself.
 
-Instead of giving you the code, we'll build it up from the ground up. LO AND BEHOLD! An IntList!
+Let's build it up from the ground up. LO AND BEHOLD! An IntList!
 
 ![INITIALLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-05.png)
 
@@ -61,11 +61,11 @@ the sevenNode (there's no link going back), hence we can't change sevenNode's ne
 ![THIRDLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-03.png)
 
 So bam. Now let's do the surgery and insert the sevenNode! Question is, which links do we update first? ThreeNode's
-next currently points to eightNode, and after insertion, should be changed to the sevenNode. SevenNode's next should be eightNode. Suppose we changed threeNode's next to be sevenNode, we can do that. Then change sevenNode's next to eightNode... urgh... uhh... with what links? 
+next currently points to eightNode, and after insertion, should be changed to the sevenNode. SevenNode's next should be eightNode. Suppose we changed threeNode's next to be sevenNode, we can do that. Then change sevenNode's next to eightNode... **urgh... uhh...** with what links? 
 
 ![FIFTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-06.png)
 
-Sure, I could use L->last, but what if this case was in the middle of the list and we didn't have this handy L->last reference? We'd be screwed! So we shouldn't do this surgery first, we should first change sevenNode's next to eightNode AND THEN change threeNode's next to sevenNode. You'll be running into this a lot in this week's lab, be careful and understand the order you link up your nodes! When in doubt do a drawing and become the computer and execute your linking code. The next images show the correct order of surgery.
+Sure, I could use L->last, but what if this case was in the middle of the list and we didn't have this handy L->last reference? **We'd be screwed!** So we shouldn't do this surgery first, we should first change sevenNode's next to eightNode AND THEN change threeNode's next to sevenNode. You'll be running into this a lot in this week's lab, be careful and understand the order you link up your nodes! When in doubt do a drawing and become the computer and execute your linking code. The next images show the correct order of surgery.
 
 ![FOURTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-01.png)
 ![SIXTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-04.png)
@@ -92,4 +92,20 @@ that holds our integers) so that we could _skip_ observing some elements? (Hint:
 This is difficult! Don't be disheartened if you can't get it, but the return on investment on even _attempting_ this problem is huge!
 
 ## A simple unit test for those confused on Task 2, Lab 3.
+
+Below I've written a reaaally simple procedure which tests InsertAfter at different positions (num to move curr is given by moveNum). This is _just a skeleton!_ So ```TestTitlePrint, DLListMoveTo etc.``` is something you should implement. You should write tests that apply the methods DLListInsertAfter, DLListInsertBefore, DLListRemove on head, tail, and somewhere in the middle of different type of lists (empty, one full, some full etc.).
+
+```C
+void TestEdgeCasesInsertAfter(DLList L, int moveNum)
+{
+    /* moveNum - how many times you want to move L->curr forward, negative number for moving backwards */ 
+    TestTitlePrint(moveNum);      // some function that prints out what's going to happen
+    char *t = "It's really cold outside, they are calling it a major freeze, weeks ahead of normal. Man, we could use a big fat dose of global warming! - Trump";
+    DLListMoveTo(L, moveNum);     // want to test at head, tail and somewhere in the middle
+    putDLList(OUTSTREAM, L);      // print out the state of the list, curr and size
+    DLListInsertAfter(L, t);      // do the operation
+    putDLList(OUTSTREAM, L);      // print out the state of the list, curr and size
+    assert(validDLList(L));       // run validDLList! IMPORTANT!
+}
+```
 
