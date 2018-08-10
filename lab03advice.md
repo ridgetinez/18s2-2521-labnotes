@@ -13,6 +13,12 @@ two hours anymore rip). If you had any lingering questions from the lab, then ho
 > - Come away with a _formula_ to attack problems you haven't seen before.
 > - Leave with a sense of - shit, there's so much I can do, but so little time. Feels shitty, but it's actually a healthy feeling.
 
+Some quick links that might help you for this week:
+- A bunch of linked list problems from Stanford you can practice on (easily ace the linked list exam coming up): [Link](http://cslibrary.stanford.edu/105/LinkedListProblems.pdf)
+- Some [linked list notes](http://cslibrary.stanford.edu/103/LinkedListBasics.pdf) from Stanford if you need some more foundation! I found them invaluable in COMP1511/2521.
+- COLOUR-FY your printf statements (help your eyes when testing!): [Link](https://github.com/johnsonshi/cs2521_18s2/blob/master/wk3/ext/colours.c)
+- Your COMP2521 lecture notes are a godsend! Reviewing [the latest sorting lecture notes](https://www.cse.unsw.edu.au/~cs2521/18s2/lecs/week03_04_sorting/notes.html) will be invaluable for gaining the algorithm analysis skills needed for the later weeks.  
+
 ## What's the difference between Singly vs. Doubly linked lists?
 
 Let's consider the question that we went around asking to poor, unsuspecting souls who just wanted their lab marked off. The implementation of ```IntListInsertInOrder``` (the same procedure you had to implement for lab01) has a logical error. Given the input list ```[1,3,4]``` and the value to insert ```2```, it produces the list ```[1,3,2,4]```. How can the procedure be fixed?
@@ -108,4 +114,7 @@ void TestEdgeCasesInsertAfter(DLList L, int moveNum)
     assert(validDLList(L));       // run validDLList! IMPORTANT!
 }
 ```
+
+**Good luck guys! I'll see y'all on Tuesday.**
+**Adrian :)**
 
