@@ -60,9 +60,22 @@ the sevenNode (there's no link going back), hence we can't change sevenNode's ne
 
 ![THIRDLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-03.png)
 
-So bam. Now let's do the surgery and insert the sevenNode!
+So bam. Now let's do the surgery and insert the sevenNode! Question is, which links do we update first? ThreeNode's
+next currently points to eightNode, and after insertion, should be changed to the sevenNode. SevenNode's next should be eightNode. Suppose we changed threeNode's next to be sevenNode, we can do that. Then change sevenNode's next to eightNode... urgh... uhh... with what links? 
 
-![FOURTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-04.png)
+![FIFTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-06.png)
+
+Sure, I could use L->last, but what if this case was in the middle of the list and we didn't have this handy L->last reference? We'd be screwed! So we shouldn't do this surgery first, we should first change sevenNode's next to eightNode AND THEN change threeNode's next to sevenNode. You'll be running into this a lot in this week's lab, be careful and understand the order you link up your nodes! When in doubt do a drawing and become the computer and execute your linking code. The next images show the correct order of surgery.
+
+![FOURTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-01.png)
+![SIXTHLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-04.png)
+
+So from this, we can takeaway:
+- Always think whether you want curr to stop on the node you're thinking of, or just before the node you're thinking of. Typically the latter case is more applicable for insertions into singly linked lists, but *always* draw your linked lists and reason about them before you code anything.
+- The order you do your pointer linking between nodes is really important! You don't want to lose information by overwriting a link that you actually need in the future :(
+- Come to labs! Only you can prevent forest fires.
+
+In this week's lab, you'll have access to current in the DLListRep. Think, do we have to do inserts into doubly linked lists like the way I just described? What's the difference between the two? (Hint: think about what you can get with the prev pointer in your DLLNodes!)
 
 
 ## Can we do sorted insert into a data structure faster? (MOAR FASTNESS)
