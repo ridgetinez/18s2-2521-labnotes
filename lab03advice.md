@@ -62,7 +62,7 @@ do we stop our ```curr``` pointer so that we can successfully link our ```7``` t
 ![SECONDLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-02.png)
 
 Well, if we chose **(c)**, then we can set the sevenNode's next to the eightNode, however we can't set the threeNode's next to the sevenNode! The reason why we can't is because from the eightNode alone, we can't access
-the sevenNode (there's no link going back), hence we can't change sevenNode's next. If we stop at **(a)**, since we're not directly before the point of insertion (that's between 3 and 8) we can keep going forward. Hence we'd like to stop at **(b)** since it gives us both the ability to change the threeNode, and also have access to the eightNode by threeNode->next.
+the threeNode (there's no link going back), hence we can't change threeNode's next. If we stop at **(a)**, since we're not directly before the point of insertion (that's between 3 and 8) we can keep going forward. Hence we'd like to stop at **(b)** since it gives us both the ability to change the threeNode, and also have access to the eightNode by threeNode->next.
 
 ![THIRDLIST](https://github.com/ridgetinez/18s2-2521-labnotes/blob/master/images/03-03.png)
 
